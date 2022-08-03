@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{menu.html}">
+<head>
+    <meta charset="UTF-8" >
+    <title>List of Contacts </title>
+    <!--  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+      <link rel="stylesheet" type="text/css" th:href="@{/imgstyle.css}"></link> -->
+</head>
+<body>
+
+<div layout:fragment="content">
+    <br>
+
+    <div class="container-fluid">
+        <div class="container">
+            <h1 class="text-center" >Administration of Contacts</h1>
+
+            <div class="text-center">
+
+            </div>
+
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/agendas/new}" class="btn btn-primary btn-sm mb3">Register a contact </a>
+            </div>
+            <div class="col-lg-3">
+                <a th:href="@{/agendas/importData/excel}" class="btn btn-primary btn-sm mb3">Selenium </a>
+            </div>
+            <div class="col-lg-3">
+                <a th:href="@{/agendas/export/excel}" class="btn btn-primary btn-sm mb3">Export to Excel </a>
+            </div>
+
+        </div>
+        <br>
+
+
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Cellphone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">Identification</th>
+                <th scope="col">Actions</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="agenda: ${agendas}">
+
+                <td th:text="${agenda.id}">Id</td>
+                <td th:text="${agenda.name}">Opening Time</td>
+                <td th:text="${agenda.lastName}">Closing Time</td>
+                <td th:text="${agenda.phoneNumber}">Given Date</td>
+                <td  th:text="${agenda.email}">Returning Date</td>
+                <td  th:text="${agenda.country}">Returning Date</td>
+                <td  th:text="${agenda.city}">Returning Date</td>
+                <td  th:text="${agenda.identification}">Returning Date</td>
+                <td>
+                    <a th:href="@{/agendas/edit/{id}(id=${agenda.id})}" class="btn btn-info">Edit</a>
+                    <a th:href="@{/agendas/{id}(id=${agenda.id})}" class="btn btn-danger">Delete</a>
+                </td>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
